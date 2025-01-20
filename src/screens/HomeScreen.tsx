@@ -1,11 +1,14 @@
-import { ImageBackground, StyleSheet, Text, View } from 'react-native';
+import { Image, ImageBackground, StyleSheet, Text, View } from 'react-native';
 import React, { FC, useEffect } from 'react';
 import { commonStyles } from '../styles/commonStyles';
 import Animated, {useSharedValue, useAnimatedStyle, withTiming} from 'react-native-reanimated';
-import { screenWidth } from '../utils/Constants';
+import { screenHeight, screenWidth } from '../utils/Constants';
 import { useIsFocused } from '@react-navigation/native';
 import { useSound } from '../navigation/SoundContext';
 import LottieView from 'lottie-react-native';
+import ScalePress from '../components/ui/ScalePress';
+import { navigate } from '../utils/NavigationUtil';
+import Footer from '../components/ui/Footer';
 
 const HomeScreen:FC = () => {
     // for playing sound on HomeScreen using useSound() context hook
@@ -32,7 +35,7 @@ const HomeScreen:FC = () => {
 
 
   return (
-    <ImageBackground source={require('../assets/images/b2.png')} style={commonStyles.simpleContainer}>
+    <ImageBackground source={require('../assets/images/b2.png')} style={commonStyles.container}>
         {/* For animated image */}
         <Animated.Image
             source={require('../assets/images/banner.png')}
@@ -48,6 +51,15 @@ const HomeScreen:FC = () => {
             hardwareAccelerationAndroid={true}
             style={styles.lottieView}
         />
+
+        <ScalePress style={styles.playButtonContainer} onPress={()=> navigate('LevelScreen')}>
+            <Image
+            source={require('../assets/icons/play.png')}
+            style={styles.playButton}
+            />
+        </ScalePress>
+
+        <Footer/>
     </ImageBackground>
   )
 }
@@ -69,5 +81,13 @@ const styles = StyleSheet.create({
         right: 0,
         top: '50%',
         transform: [{scaleY: -1}]
+    },
+    playButton: {
+        resizeMode: 'contain',
+        width: screenWidth * 0.5,
+        height: screenHeight * 0.2
+    },
+    playButtonContainer: {
+        marginTop: screenHeight * 0.35
     }
 })
