@@ -1,13 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import Navigation from './src/navigation/Navigation'
 
-const App = () => {
+const SplashScreen = () => {
   return (
-    <Navigation/>
+    <View>
+      <Text>SplashScreen</Text>
+    </View>
   )
 }
 
-export default App
+export default SplashScreen
 
 const styles = StyleSheet.create({})
