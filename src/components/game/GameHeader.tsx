@@ -8,6 +8,9 @@ const GameHeader:FC<{
     collectedCandies: number,
     time: number
 }> = ({ time, totalCount, collectedCandies }) => {    
+    // console.log('collectedCandies---',collectedCandies);
+    // console.log('totalCount---', totalCount);
+    
   return (
     <View style={styles.container}>
         <SafeAreaView/>

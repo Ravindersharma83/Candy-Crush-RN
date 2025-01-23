@@ -19,11 +19,11 @@ const HomeScreen:FC = () => {
     // Adding animation to the image
     const translateY = useSharedValue(-200);
 
-    // useEffect(()=>{
-    //     if(isFocused) {
-    //         playSound('bg', true);
-    //     }
-    // },[isFocused]);
+    useEffect(()=>{
+        if(isFocused) {
+            playSound('bg', true);
+        }
+    },[isFocused]);
 
     useEffect(()=>{
         translateY.value = withTiming(0,{duration: 3000});
